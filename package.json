@@ -1,0 +1,19 @@
+{
+  "name": "belajar-node-js",
+  "version": "1.0.0",
+  "description": "Belajar node js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andre4freelance/belajar-node.js.git"
+  },
+  "author": "Andre Bastian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andre4freelance/belajar-node.js/issues"
+  },
+  "homepage": "https://github.com/andre4freelance/belajar-node.js#readme"
+}
