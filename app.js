@@ -1,7 +1,8 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const express = require('express'); // Untuk membuat webserver
+const app = express(); // Membuat instance dari express
+const bodyParser = require('body-parser'); // Untuk parsing request body
+const mysql = require('mysql'); // Untuk koneksi ke database MySQL
+require('dotenv').config(); // Untuk mengakses variabel lingkungan dari file .env
 
 //Koneksi ke /public/ untuk tampilan web
 app.use(express.static('public'));
@@ -14,11 +15,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Koneksi ke database MySQL
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'me',
-    password: 'Masuklah123', // Ganti dengan password MySQL Anda
-    database: 'my_database' // Ganti dengan nama database Anda
+    host: process.env.DB_HOST,       // Mengambil host dari .env
+    user: process.env.DB_USER,       // Mengambil user dari .env
+    password: process.env.DB_PASSWORD, // Mengambil password dari .env
+    database: process.env.DB_DATABASE  // Mengambil nama database dari .env
 });
+
 
 // Membuat koneksi ke database
 db.connect((err) => {
