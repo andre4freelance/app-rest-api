@@ -1,14 +1,5 @@
-require('dotenv').config();
-const mysql = require('mysql');
 const readline = require('readline');
-
-// Buat koneksi ke database
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
-});
+const connection = require('./db'); // Mengimpor koneksi dari db.js
 
 // Buat interface untuk input dari terminal
 const rl = readline.createInterface({
@@ -43,7 +34,9 @@ async function inputDataBarang() {
         console.log("Data berhasil ditambahkan! ID:", result.insertId);
       }
       rl.close();
-      connection.end();
+      connection.end(); {
+        console.log("Koneksi ke database ditutup.");
+      }
     });
 
   } catch (err) {
