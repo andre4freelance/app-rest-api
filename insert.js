@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mysql = require('mysql');
+const readline = require('readline');
 
 // Buat koneksi ke database
 const connection = mysql.createConnection({
@@ -9,41 +10,48 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME
 });
 
-// Sambungkan ke database
-connection.connect((err) => {
-  if (err) {
-    console.error('Koneksi gagal:', err.stack);
-    return;
-  }
-  console.log('Terhubung ke database sebagai ID', connection.threadId);
-
-  // Data yang ingin ditambahkan
-  const barangBaru = {
-    nama_barang: "Headset JBL Quantum 100",
-    jenis_barang: "Aksesoris Komputer",
-    harga_barang: 300000.00,
-    jumlah_barang: 40
-  };
-
-  // Query insert
-  const sql = `
-    INSERT INTO barang 
-    (nama_barang, jenis_barang, harga_barang, jumlah_barang) 
-    VALUES (?, ?, ?, ?)
-  `;
-
-  connection.query(
-    sql,
-    [barangBaru.nama_barang, barangBaru.jenis_barang, barangBaru.harga_barang, barangBaru.jumlah_barang],
-    (err, result) => {
-      if (err) {
-        console.error('Gagal menambahkan data:', err);
-        return;
-      }
-      console.log('Data berhasil ditambahkan! ID:', result.insertId);
-    }
-  );
-
-  // Tutup koneksi
-  connection.end();
+// Buat interface untuk input dari terminal
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
 });
+
+// Fungsi tanya satu per satu
+function tanyaPertanyaan(pertanyaan) {
+  return new Promise((resolve) => {
+    rl.question(pertanyaan, (jawaban) => resolve(jawaban));
+  });
+}
+
+async function inputDataBarang() {
+  try {
+    const nama = await tanyaPertanyaan("Nama barang = ");
+    const jenis = await tanyaPertanyaan("Jenis barang = ");
+    const harga = await tanyaPertanyaan("Harga barang = ");
+    const jumlah = await tanyaPertanyaan("Jumlah barang = ");
+
+    const sql = `
+      INSERT INTO barang 
+      (nama_barang, jenis_barang, harga_barang, jumlah_barang) 
+      VALUES (?, ?, ?, ?)
+    `;
+
+    connection.query(sql, [nama, jenis, parseFloat(harga), parseInt(jumlah)], (err, result) => {
+      if (err) {
+        console.error("Gagal menambahkan data:", err);
+      } else {
+        console.log("Data berhasil ditambahkan! ID:", result.insertId);
+      }
+      rl.close();
+      connection.end();
+    });
+
+  } catch (err) {
+    console.error("Terjadi error:", err);
+    rl.close();
+    connection.end();
+  }
+}
+
+// Jalankan
+inputDataBarang();
