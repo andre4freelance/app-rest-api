@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/andre4freelance/belajar-node.js/issues"
   },
-  "homepage": "https://github.com/andre4freelance/belajar-node.js#readme"
+  "homepage": "https://github.com/andre4freelance/belajar-node.js#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "mysql": "^2.18.1"
+  }
 }
