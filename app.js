@@ -18,7 +18,7 @@ const db = mysql.createConnection({
     host: process.env.DB_HOST,       // Mengambil host dari .env
     user: process.env.DB_USER,       // Mengambil user dari .env
     password: process.env.DB_PASSWORD, // Mengambil password dari .env
-    database: process.env.DB_DATABASE  // Mengambil nama database dari .env
+    database: process.env.DB_NAME  // Mengambil nama database dari .env
 });
 
 // Membuat koneksi ke database
@@ -52,6 +52,15 @@ db.query(queryDataFromTableBarang, (queryErr, results) => {
            }
         });
     }});
+
+// Tutup koneksi database saat aplikasi selesai
+db.end((err) => {
+    if (err) {
+        console.error('Error closing connection:', err.stack);
+    } else {
+        console.log('Database connection closed successfully.');
+    }
+});
 
 // Menjalankan webserver pada port 8080
 const port = 8080;
