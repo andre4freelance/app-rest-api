@@ -2,7 +2,7 @@ const express = require('express'); // Untuk membuat webserver
 const app = express(); // Membuat instance dari express
 const bodyParser = require('body-parser'); // Untuk parsing request body
 const mysql = require('mysql'); // Untuk koneksi ke database MySQL
-require('dotenv').config(); // Untuk mengakses variabel lingkungan dari file .env
+require('dotenv').config(); // Untuk mengakses environment dari file .env
 
 //Koneksi ke /public/ untuk tampilan web
 app.use(express.static('public'));
@@ -21,7 +21,6 @@ const db = mysql.createConnection({
     database: process.env.DB_DATABASE  // Mengambil nama database dari .env
 });
 
-
 // Membuat koneksi ke database
 db.connect((err) => {
     if (err) {
@@ -29,9 +28,32 @@ db.connect((err) => {
         return;
     }
     console.log('Koneksi ke database berhasil');
-});     
+});
 
-// Menjalankan server pada port 8080
+// show data dari tabel barang
+const queryDataFromTableBarang = 'SELECT * FROM barang;';
+db.query(queryDataFromTableBarang, (queryErr, results) => {
+    if (queryErr) {
+        console.error ("Gagal membuka table barang");
+        return;
+    };
+    if (results.length > 0) {
+            console.log("\n--- Isi Tabel Barang ---");
+            console.table(results); // console.table() menampilkan array of objects dalam format tabel yang rapi
+            console.log("----------------------\n");
+        } else {
+            console.log("\n--- Tabel Barang Kosong ---");
+            console.log("Tidak ada data yang ditemukan di tabel barang.");
+            console.db.end((endErr) => {
+           if(endErr) {
+                console.error('Error closing connection:', endErr.stack);
+           } else {
+                console.log('Database connection closed successfully.');
+           }
+        });
+    }});
+
+// Menjalankan webserver pada port 8080
 const port = 8080;
 app.listen(port, () => {
     console.log(`http://192.168.100.209:${port}`);
