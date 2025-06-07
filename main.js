@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Middleware untuk parsing JSON
 app.use(bodyParser.json());
 
-
+// Import router
+var routes = require('./routes');
+routes(app);
 
 // Menjalankan webserver pada port 8080
 const port = 8080;
