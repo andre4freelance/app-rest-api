@@ -1,4 +1,4 @@
-var mysql = require('mysql'); // Import library mysql untuk koneksi ke database
+const mysql = require('mysql'); // Import library mysql untuk koneksi ke database
 require('dotenv').config(); // Import dotenv untuk mengelola environment variables
 
 // Buat koneksi ke database

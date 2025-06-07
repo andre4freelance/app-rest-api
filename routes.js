@@ -12,5 +12,8 @@ module.exports = function(app) {
 
     app.route('/API/barang/:id')
         .get(myjson.tampilkanBarangById);
+
+    app.route('/API/tambah')
+        .post(myjson.tambahBarang);
 };
 
