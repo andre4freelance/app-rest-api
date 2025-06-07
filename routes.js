@@ -9,5 +9,8 @@ module.exports = function(app) {
 
     app.route('/API/barang')
         .get(myjson.tampilkanSemuaBarang);
+
+    app.route('/API/barang/:id')
+        .get(myjson.tampilkanBarangById);
 };
 
