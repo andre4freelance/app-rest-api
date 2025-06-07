@@ -2,10 +2,6 @@ const express = require('express'); // Untuk membuat webserver
 const app = express(); // Membuat instance dari express
 const bodyParser = require('body-parser'); // Untuk parsing request body
 
-
-//Koneksi ke /public/ untuk tampilan web
-// app.use(express.static('public'));
-
 // Middleware untuk parsing URL-encoded data
 app.use(bodyParser.urlencoded({ extended: true }));
 
