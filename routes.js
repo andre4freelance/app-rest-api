@@ -6,4 +6,8 @@ module.exports = function(app) {
 
     app.route('/API')
         .get(myjson.index);
+
+    app.route('/API/barang')
+        .get(myjson.tampilkanSemuaBarang);
 };
+
