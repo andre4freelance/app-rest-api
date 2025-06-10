@@ -15,5 +15,11 @@ module.exports = function(app) {
 
     app.route('/API/tambah')
         .post(myjson.tambahBarang);
+
+    app.route('/API/ubah')
+        .put(myjson.updateBarang);
+
+    app.route('/API/hapus/:id')
+        .delete(myjson.hapusBarang);
 };
 

@@ -47,3 +47,33 @@ exports.tambahBarang = function(req, res) {
             }
         });
 };
+
+// Mengupdate data barang berdasarkan ID
+exports.updateBarang = function(req, res) {
+    let id = req.body.id;
+    let nama_barang = req.body.nama_barang;
+    let jenis_barang = req.body.jenis_barang;
+    let harga_barang = req.body.harga_barang;
+    let jumlah_barang = req.body.jumlah_barang;
+    dbConn.query('UPDATE barang SET nama_barang = ?, jenis_barang = ?, harga_barang = ?, jumlah_barang = ? WHERE ID_barang = ?', 
+        [nama_barang, jenis_barang, harga_barang, jumlah_barang, id], 
+        function(error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Data barang berhasil diupdate!", res);
+            }
+        });
+};
+
+// Delete data barang berdasarkan ID
+exports.hapusBarang = function(req, res) {
+    let id = req.params.id;
+    dbConn.query('DELETE FROM barang WHERE ID_barang = ?', [id], function(error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Data barang berhasil dihapus!", res);
+        }
+    });
+};
