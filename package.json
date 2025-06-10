@@ -1,7 +1,7 @@
 {
-  "name": "belajar-node-js",
+  "name": "app-rest-api",
   "version": "1.0.0",
-  "description": "Belajar node js",
+  "description": "Belajar node js dengan membuat API sederhana untuk mengelola data barang.",
   "main": "app.js",
   "scripts": {
     "start": "node main.js",
