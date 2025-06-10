@@ -24,7 +24,7 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek ini secara lokal.
 ### 1. Clone Repositori
 Clone repositori ini ke mesin lokal Anda:
 ```bash
-git clone [https://github.com/andre4freelance/belajar-node.js.git](https://github.com/andre4freelance/belajar-node.js.git)
+git clone https://github.com/andre4freelance/belajar-node.js.git
 cd belajar-node.js
 2. Instal DependensiInstal semua dependensi yang diperlukan menggunakan npm. Perintah ini akan mengunduh semua package yang tercantum dalam file package.json.npm install
 3. Konfigurasi DatabaseAnda perlu membuat database dan mengimpor tabel barang yang skemanya sudah disediakan.Buka klien database Anda (misalnya, MySQL command line, phpMyAdmin, DBeaver).Buat database baru. Berdasarkan file my_database.sql, nama databasenya adalah my_database.CREATE DATABASE my_database;
