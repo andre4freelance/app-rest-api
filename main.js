@@ -15,5 +15,5 @@ routes(app);
 // Menjalankan webserver pada port 8080
 const port = 8080;
 app.listen(port, () => {
-    console.log(`http://192.168.100.209:${port}`);
+    console.log(`http://your-vm-ip:${port}`);
 });
