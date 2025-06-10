@@ -26,8 +26,10 @@ Clone repositori ini ke mesin lokal Anda:
 ```bash
 git clone https://github.com/andre4freelance/belajar-node.js.git
 cd belajar-node.js
-2. Instal DependensiInstal semua dependensi yang diperlukan menggunakan npm. Perintah ini akan mengunduh semua package yang tercantum dalam file package.json.npm install
-3. Konfigurasi DatabaseAnda perlu membuat database dan mengimpor tabel barang yang skemanya sudah disediakan.Buka klien database Anda (misalnya, MySQL command line, phpMyAdmin, DBeaver).Buat database baru. Berdasarkan file my_database.sql, nama databasenya adalah my_database.CREATE DATABASE my_database;
+
+## 2. Instal DependensiInstal semua dependensi yang diperlukan menggunakan npm. Perintah ini akan mengunduh semua package yang tercantum dalam file package.json.npm install
+
+## 3. Konfigurasi DatabaseAnda perlu membuat database dan mengimpor tabel barang yang skemanya sudah disediakan.Buka klien database Anda (misalnya, MySQL command line, phpMyAdmin, DBeaver).Buat database baru. Berdasarkan file my_database.sql, nama databasenya adalah my_database.CREATE DATABASE my_database;
 Impor struktur tabel dan data dari file my_database.sql ke dalam database yang baru saja Anda buat.4. Konfigurasi Variabel LingkunganAPI ini memerlukan variabel lingkungan untuk terhubung ke database.Buat file baru bernama .env di direktori utama proyek.Salin dan tempel konten berikut ke dalam file .env, lalu sesuaikan nilainya dengan konfigurasi database Anda. File ini dibaca oleh db.js untuk melakukan koneksi.# Konfigurasi Database
 DB_HOST=localhost
 DB_USER=root # Ganti dengan username database Anda
@@ -38,7 +40,9 @@ Server akan berjalan dan mendengarkan pada port 8080. Anda akan melihat pesan di
     "status": 200,
     "values": "REST API running well!"
 }
-2. Tampilkan Semua BarangMenampilkan seluruh data yang ada di tabel barang.URL : /API/barangMethod : GETContoh Response Sukses (200 OK):[
+
+
+### 2. Tampilkan Semua BarangMenampilkan seluruh data yang ada di tabel barang.URL : /API/barangMethod : GETContoh Response Sukses (200 OK):[
     {
         "ID_barang": 2,
         "nama_barang": "Pensil Faber-Castell 2B",
